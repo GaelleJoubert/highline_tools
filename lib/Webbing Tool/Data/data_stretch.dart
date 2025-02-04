@@ -23,15 +23,15 @@ class Stretch {
 
 class StretchValue {
   /// A Strech Value is a combination of a percentage of stretch, at a given pull force (in KN)
-  double pullForce ; /// in Kilo Newton
-  double stretchPercent ;
+  double? pullForce ; /// in Kilo Newton
+  double? stretchPercent ;
 
   StretchValue({required this.pullForce, required this.stretchPercent});
 
   factory StretchValue.fromJson(Map<String, dynamic> json) {
     return StretchValue(
-      pullForce: json['kn'].toDouble(),
-      stretchPercent: json['percent'].toDouble(),
+      pullForce: json['kn'] == "" ? null : json['kn'] is String ? double.parse(json['kn']) : json['kn'].toDouble(),
+      stretchPercent: json['percent'] == "" ? null : json['percent'] is String ? double.parse(json['percent']) : json['percent'].toDouble(),
     );
   }
 

@@ -14,13 +14,33 @@ class Webbing {
   Webbing({required this.brand, required this.name, required this.stretch, required this.materialType, required this.weight, required this.breakingStrength});
 
   factory Webbing.fromJson(Map<String, dynamic> json) {
+    // If it's an empty string or the field is not present, return null.
+
+    double? weight ;
+    double? breakingStrength ;
+    //Needed because Sometimes the data is considered String, and sometimes int ...
+    if (json['weight'] != null) {
+      if (json['weight'] is String) {
+        json['weight'] == ""? null: double.parse(json['weight']);
+      } else {
+        weight = json['weight'].toDouble();
+      }
+    }
+    if(json['breakingStrength'] != null){
+      if (json['breakingStrength'] is String) {
+        json['breakingStrength'] == ""? null: double.parse(json['breakingStrength']);
+      } else {
+        breakingStrength = json['breakingStrength'].toDouble();
+      }
+    }
+
     return Webbing(
-      name: json['name'] as String,
-      brand: json['brand'] as String,
-      stretch: Stretch.fromJson(json['stretch']),
-      materialType : json['materialType'] as String,
-      weight: json['weight'] == "" ? (null) : (json['weight'] is String ? double.parse(json['weight']) : json['weight'].toDouble() ), //Needed because Sometimes the data is considered String, and sometimes int ...
-      breakingStrength : json['breakingStrength'] == "" ? (null) : (json['breakingStrength'] is String ? double.parse(json['breakingStrength']) : json['breakingStrength'].toDouble()),
+      name: json['name'] == "" ? null : json['name'] ,
+      brand: json['brand'] == "" ? null : json['brand'],
+      stretch: json['stretch'] == null ? null : Stretch.fromJson(json['stretch']),
+      materialType : json['materialType'] == "" ? null : json['materialType'],
+      weight: weight,
+      breakingStrength : breakingStrength
     );
 
   }
