@@ -14,8 +14,8 @@ Future<List<Webbing> ?> getWebbingDataFromGithub() async {
   final http.Response response = await http.get(
     Uri.parse(url),
     headers: {
-      "Accept":"application/vnd.github.object+json"
-      /*"Accept": "application/vnd.github.raw+json"*/
+      "Accept":"application/vnd.github.object+json",
+      'Authorization':'Bearer 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'
     }
   );
 
@@ -35,7 +35,7 @@ Future<List<Webbing> ?> getWebbingDataFromGithub() async {
     print('User data not found.');
     return null;
   } else {
-    print('Failed to read user data. Status Code: ${response.statusCode}');
+    print('Failed to read user data. Status Code: ${response.statusCode}, ${response.headers}');
     return null;
   }
 }

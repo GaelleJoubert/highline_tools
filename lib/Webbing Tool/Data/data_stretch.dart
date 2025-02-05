@@ -16,7 +16,7 @@ class Stretch {
   @override
   String toString() {
     String listOfStrechValue = "Stretch : ";
-    curveStrech.forEach((value)=> listOfStrechValue += "$value, " );
+    curveStrech.forEach((value)=> listOfStrechValue += "$value,\n" );
     return listOfStrechValue ;
   }
 }
