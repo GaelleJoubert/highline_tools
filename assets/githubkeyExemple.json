@@ -1,0 +1,4 @@
+
+{
+  "_comment": " TODO : Replace GITHUB_PERSONNAL_TOKEN with your github personnal token and rename this file to githubkey.json",
+  "Authorization":"Bearer GITHUB_PERSONNAL_TOKEN"}

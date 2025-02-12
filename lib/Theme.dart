@@ -15,6 +15,17 @@ class CustomTheme {
            ),
          ),
        ),
+       scrollbarTheme: ScrollbarThemeData(
+         thumbColor: WidgetStateProperty.all(Colors.teal),
+         thickness: WidgetStateProperty.all(4),
+         radius: Radius.circular(4),
+       ),
+       iconTheme: IconThemeData(
+         color: Colors.teal,
+       ),
+       drawerTheme: DrawerThemeData(
+
+         ),
      );
   }
 }
